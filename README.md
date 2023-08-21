@@ -13,3 +13,5 @@ cargo add tokio --features full
 cargo add hyper@1.0.0-rc.4 --features=full
 cargo add tower
 cargo add tower-http --features=cors,fs,trace
+cargo add tracing
+cargo add tracing tracing-subscriber --features=env-filter
