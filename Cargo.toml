@@ -1,0 +1,15 @@
+[package]
+name = "rust-axum-with-vite"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = { git = "https://github.com/tokio-rs/axum", branch = "main" }
+hyper = { version = "1.0.0-rc.4", features = ["full"] }
+tokio = { version = "1.32.0", features = ["full"] }
+tokio-stream = "0.1.14"
+tower = "0.4.13"
+tower-http = { version = "0.4.3", features = ["fs", "cors", "trace"] }
+tower-hyper-http-body-compat = { version = "0.2.0", features = ["http1", "server"] }
