@@ -16,9 +16,11 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false, // vite default is: true
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
+
+    /* my option */
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

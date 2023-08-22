@@ -6,13 +6,13 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    fetch('http://localhost:3000/api/1', {method: 'GET'})
-    .then(res => res.json())
-    .then(data => {
-        setCount(data.data)
-    })
-  }, [])
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/api/1', {method: 'GET'})
+  //   .then(res => res.json())
+  //   .then(data => {
+  //       setCount(data.data)
+  //   })
+  // }, [])
 
 
   return (
