@@ -1,4 +1,4 @@
-use std::net::SocketAddr;
+use std::{net::SocketAddr, vec};
 
 use axum::{
     body::Body,
@@ -80,10 +80,17 @@ async fn root_handler(
     State(mode): State<UiProxyMode>,
     ConnectInfo(remote_addr): ConnectInfo<SocketAddr>,
 ) -> impl IntoResponse {
+    let mut filenames = vec![];
+    for filename in Asset::iter() {
+        filenames.push(filename.to_string());
+    }
     Html(format!(
         r##"root from {remote_addr}<br />
             MODE: {mode:?}
             <a href="/ui">ui</a><br />
+            <pre>
+files: {filenames:#?}
+            </pre>
         "##
     ))
 }
@@ -141,7 +148,7 @@ async fn ui_proxy(State(proxy_mode): State<UiProxyMode>, req: Request) -> impl I
 }
 
 #[derive(RustEmbed)]
-#[folder = "client/dist/"]
+#[folder = "client/dist"]
 struct Asset;
 
 pub struct StaticFile<T>(pub T);

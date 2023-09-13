@@ -6,21 +6,17 @@
 # setup server
 
 ```
-cargo add axum --git=https://github.com/tokio-rs/axum --branch=main
-cargo add tracing tracing-subscriber
-```
-
-cargo add tokio --features full
-cargo add hyper@1.0.0-rc.4 --features=full
-cargo add tower
-cargo add tower-http --features=cors,fs,trace
-cargo add tracing
-cargo add tracing tracing-subscriber --features=env-filter
-
 # build
+cargo build
 
-```
-CROSS_CONTAINER_ENGINE=podman cross run --target x86_64-pc-windows-gnu
+# for windows
+cp Cross.toml{.example,}
+cross build
+
+
+# release
+cargo build --profile release
+cross build --profile release
 ```
 
 ## 覚書
@@ -29,3 +25,6 @@ CROSS_CONTAINER_ENGINE=podman cross run --target x86_64-pc-windows-gnu
   境変変数で ON/OFF するか、なにかファイルを見て実行制御したいところ
 
 - npm がないよー
+
+- Docker build で proxy を渡す
+  docker build -f ./Docker-custom.file . --build-arg http_proxy=http://172.16.0.1:3128

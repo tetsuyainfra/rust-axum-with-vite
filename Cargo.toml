@@ -30,3 +30,10 @@ mime_guess = "2.0.4"
 # strip = true # more slime...
 strip = false # default
 # codegen-units = 1 # ビルド時間がのびるが小さくなる
+
+[target.'cfg(unix)'.dependencies]
+rust-embed = { version = "8.0.0", features = ["include-exclude"] }
+
+[target.'cfg(windows)'.dependencies]
+# sometime, we move binary from linxu to windows
+rust-embed = { version = "8.0.0", features = ["include-exclude", "debug-embed"] }
